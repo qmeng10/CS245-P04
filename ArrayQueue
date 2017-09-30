@@ -1,0 +1,60 @@
+
+public class ArrayQueue implements Queue {
+
+	private int size = 10;
+	private int head = 0;
+	private int tail = 0;
+	private Object[] queue = new Object [size];
+
+	
+	public Object dequeue() {
+		
+		Object retval;
+		if(head == tail) {
+			return null;
+		}
+
+		retval = queue[head];
+		head = (head + 1) % size;
+		return retval;
+	}
+
+	@Override
+	public void enqueue(Object item) {
+		
+//		if(size == queue.length) {
+//			Grow_Queue();
+//		}
+		queue[tail] = item;
+		tail = (tail + 1) % size;
+
+
+	}
+
+
+	public boolean empty() {
+		
+		return (head == tail);
+	}
+		
+	
+	public boolean isFull() {
+
+		return (tail + 1) % size == head;
+	}
+	
+//Just wanna document why its not working
+//	private void Grow_Queue() {
+//		
+//		int i;
+//		Object newdata[];
+//		
+//		newdata = new Object[size * 2];
+//		for(i = 0; i < size; i++) {
+//			newdata[i] = queue[i];
+//		}
+//		queue = newdata;
+//		size = size * 2;
+//	}
+
+}
