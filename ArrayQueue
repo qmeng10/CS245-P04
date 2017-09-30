@@ -1,7 +1,7 @@
 
 public class ArrayQueue implements Queue {
 
-	private int size = 10;
+	private int size = 30;
 	private int head = 0;
 	private int tail = 0;
 	private Object[] queue = new Object [size];
