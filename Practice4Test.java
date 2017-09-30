@@ -1,4 +1,3 @@
-
 public class Practice4Test {
 	
 	protected Queue queue;
@@ -14,6 +13,8 @@ public class Practice4Test {
 	}
 	
 	
+	
+	
 	public void clearData() {
 		while (!queue.empty()) {
 			queue.dequeue();
@@ -26,11 +27,14 @@ public class Practice4Test {
 	
 	public boolean isPalindrome(String item) {
 		clearData();
-		for (int i = 0; i < item.length(); i++) {
-			stack.push(item.substring(i, i+1));
-			queue.enqueue(item.substring(i, i+1));
-		}
 
+		String s = item.replaceAll("[\\W]", "");
+		for (int i = 0; i < s.length(); i++) {
+			System.out.print(s.substring(i, i+1));
+			stack.push(s.substring(i, i+1).toLowerCase());
+			queue.enqueue(s.substring(i, i+1).toLowerCase());
+		}
+		
 		while (! stack.empty() && ! queue.empty()) {
 			if (! stack.pop().equals(queue.dequeue())) {
 				return false;
