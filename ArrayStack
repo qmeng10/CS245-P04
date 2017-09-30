@@ -1,0 +1,56 @@
+
+public class ArrayStack implements Stack {
+
+	private int default_size = 10;
+	private int top = 0;
+	private Object[] stack = new Object[default_size];
+	
+	
+	
+	public void push(Object item) {
+		
+		if(top == default_size) {
+			Grow_Stack();
+		}else {
+			stack[top++] = item;
+		}
+
+	}
+
+	@Override
+	public Object pop() {
+		
+		if(top > 0) {
+			return stack[--top];
+		}else {
+			return null;
+		}
+		
+	}
+
+	@Override
+	public Object peek() {
+		
+		return stack[top];
+	}
+
+	@Override
+	public boolean empty() {
+		
+		return (top == 0);
+	}
+	
+	private void Grow_Stack() {
+		
+		int i;
+		Object newdata[];
+		
+		newdata = new Object[default_size * 2];
+		for(i = 0; i < default_size; i++) {
+			newdata[i] = stack[i];
+		}
+		stack = newdata;
+		default_size = default_size * 2;
+	}
+
+}
